@@ -1,6 +1,6 @@
 # 🛡️ Resilience Lab: Kubernetes Chaos Engineering
 
-![Build Status](https://github.com/YOUR_USERNAME_HERE/resilience-lab-k8s/actions/workflows/build-check.yml/badge.svg)
+![Build Status](https://github.com/vtmarkop/resilience-lab-k8s/actions/workflows/build-check.yml/badge.svg)
 
 ## 📋 Project Overview
 A specialized demonstration of **Chaos Engineering** principles applied to a microservices architecture. This project uses **Chaos Mesh** to inject network failures into a Kubernetes cluster to validate system behavior under stress.
