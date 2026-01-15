@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resilience-app
+  labels:
+    app: resilience-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: resilience-app
+  template:
+    metadata:
+      annotations:
+        # Chaos Mesh Injection Annotation
+        experiment.chaos-mesh.org/inject: "true"
+      labels:
+        app: resilience-app
+    spec:
+      containers:
+      - name: python-api
+        image: resilience-lab:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
