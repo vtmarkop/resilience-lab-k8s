@@ -1,0 +1,13 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: HTTPChaos
+metadata:
+  name: slow-http-test
+spec:
+  mode: all
+  selector:
+    labelSelectors:
+      app: resilience-app
+  target: Request
+  port: 5000            # Intercept traffic at the container port
+  delay: "3000ms"       # Wait 3 seconds
+  duration: "10m"       # Run for 10 minutes

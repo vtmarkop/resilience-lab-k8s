@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debug-chaos-pod
+  labels:
+    app: resilience-app
+  annotations:
+    experiment.chaos-mesh.org/inject: "true"  # <--- The Permission Slip
+spec:
+  containers:
+  - name: python-api
+    image: resilience-lab:latest
+    imagePullPolicy: Never
+    ports:
+    - containerPort: 5000

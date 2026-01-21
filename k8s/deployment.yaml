@@ -5,21 +5,21 @@ metadata:
   labels:
     app: resilience-app
 spec:
-  replicas: 2
+  replicas: 1               # We want exactly 1 copy running
   selector:
     matchLabels:
       app: resilience-app
   template:
     metadata:
-      annotations:
-        # Chaos Mesh Injection Annotation
-        experiment.chaos-mesh.org/inject: "true"
       labels:
         app: resilience-app
+      annotations:
+        # MANDATORY: Tells Chaos Mesh "You are allowed to break this"
+        experiment.chaos-mesh.org/inject: "true"
     spec:
       containers:
       - name: python-api
         image: resilience-lab:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Never  # <--- CRITICAL for Minikube
         ports:
         - containerPort: 5000
